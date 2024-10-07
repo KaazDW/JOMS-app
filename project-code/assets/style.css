@@ -1,3 +1,45 @@
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+}
+* ul {
+  list-style: none;
+}
+* a {
+  text-decoration: none;
+  color: black;
+}
+* button:hover {
+  cursor: pointer;
+}
+* button {
+  background-color: transparent;
+  border: none;
+}
 
+:root {
+  --color-black: #222;
+  --color-white: white;
+  --color-darkgrey: #323232;
+  --color-primary: #F1EFE7;
+  --color-red: #be3e2b;
+  --color-blue: #576CA8;
+  --font-title: "League Spartan", sans-serif;
+  --font-content: "Poppins", sans-serif;
+}
+
+::selection {
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+
+body {
+  background-color: var(--color-primary);
+  font-family: var(--font-content);
+  height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
 
 /*# sourceMappingURL=style.css.map */

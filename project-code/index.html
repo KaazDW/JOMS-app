@@ -3,9 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JOMS'app</title>
+    <title>InnerCheck by JOMS</title>
+    <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
+    <div id="app">
+        <h1>InnerCheck</h1>
+        <button id="startTest">Commencer le test</button>
+        
+        <form id="testForm" style="display: none;">
+            <div id="questionContainer"></div>
+            <button type="button" id="nextQuestion" style="display: none;">Suivant</button>
+            <button type="submit" id="submitTest" style="display: none;">Soumettre</button>
+        </form>
     
+        <div id="resultContainer" style="display: none;">
+          <h2>Résultat</h2>
+          <p id="resultText"></p>
+        </div>
+      </div>
+    
+      <script src="js/ask.js"></script>
+      <script src="js/app.js"></script>
 </body>
 </html>
