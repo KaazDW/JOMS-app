@@ -36,4 +36,13 @@ body {
   height: 100vh;
   display: grid;
   grid-template-rows: auto 1fr;
+
+  .yes, .no{
+    user-select: none;
+    padding: 20px;
+    border: 1px solid grey;
+  }
+
+
+
 }

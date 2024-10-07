@@ -4,6 +4,8 @@ let currentQuestionIndex = 0
 let scoreTotal = 100
 let yesCount = 0
 let noCount = 0
+let correctAnswersCount = 0
+let incorrectAnswersCount = 0
 
 function showCurrentQuestion() {
   const questionContainer = document.getElementById('questionContainer')
@@ -18,22 +20,27 @@ function showCurrentQuestion() {
   const yesLabel = document.createElement('label')
   yesLabel.textContent = ' Oui '
   yesLabel.setAttribute('for', `yes${questionData.id}`)
+  yesLabel.className = 'yes'
 
   const yesInput = document.createElement('input')
   yesInput.type = 'radio'
   yesInput.id = `yes${questionData.id}`
   yesInput.name = `question${questionData.id}`
   yesInput.value = 'yes'
+  yesInput.className = 'yes'
 
   const noLabel = document.createElement('label')
   noLabel.textContent = ' Non '
   noLabel.setAttribute('for', `no${questionData.id}`)
+  noLabel.className = 'no'
 
   const noInput = document.createElement('input')
   noInput.type = 'radio'
   noInput.id = `no${questionData.id}`
   noInput.name = `question${questionData.id}`
   noInput.value = 'no'
+  noInput.className = 'no'
+
 
   questionContainer.appendChild(questionLabel)
   questionContainer.appendChild(yesInput)
@@ -47,11 +54,18 @@ function showCurrentQuestion() {
 
 function updateScore(userAnswer) {
   const currentQuestion = questions[currentQuestionIndex]
+
   if (userAnswer === 'yes') {
-    scoreTotal -= currentQuestion.poids
     yesCount++
   } else {
     noCount++
+  }
+
+  if (userAnswer === currentQuestion.correctAnswer) {
+    correctAnswersCount++
+  } else {
+    incorrectAnswersCount++
+    scoreTotal -= currentQuestion.poids
   }
 }
 
@@ -63,16 +77,18 @@ function handleAnswer(event) {
   if (currentQuestionIndex < questions.length) {
     showCurrentQuestion()
   } else {
-    displayResults() // Affiche directement les résultats après la dernière question
+    displayResults()
   }
 }
 
 function displayResults() {
   const resultText = document.getElementById('resultText')
-  let feedback = ''
   const totalQuestions = questions.length
   const percentageYes = ((yesCount / totalQuestions) * 100).toFixed(2)
   const percentageNo = ((noCount / totalQuestions) * 100).toFixed(2)
+  const percentageCorrect = ((correctAnswersCount / totalQuestions) * 100).toFixed(2)
+
+  let feedback = ''
 
   if (scoreTotal >= 86) {
     feedback = "Votre santé mentale semble excellente. Continuez ainsi!"
@@ -89,7 +105,10 @@ function displayResults() {
     <strong>Statistiques :</strong> <br>
     Nombre de réponses "Oui" : ${yesCount} (${percentageYes}%) <br>
     Nombre de réponses "Non" : ${noCount} (${percentageNo}%) <br>
-    Nombre total de questions : ${totalQuestions}
+    Nombre total de questions : ${totalQuestions} <br>
+    Réponses correctes : ${correctAnswersCount} (${percentageCorrect}%) <br>
+    Réponses incorrectes : ${incorrectAnswersCount}<br>
+    Score finale : ${scoreTotal}
   `
   document.getElementById('resultContainer').style.display = 'block'
   document.getElementById('testForm').style.display = 'none'

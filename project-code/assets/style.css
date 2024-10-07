@@ -41,5 +41,10 @@ body {
   display: grid;
   grid-template-rows: auto 1fr;
 }
+body .yes, body .no {
+  user-select: none;
+  padding: 20px;
+  border: 1px solid grey;
+}
 
 /*# sourceMappingURL=style.css.map */
