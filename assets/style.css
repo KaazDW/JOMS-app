@@ -45,11 +45,16 @@ body {
 }
 body #app {
   border: 2px solid var(--color-white2);
-  height: 50vh;
   width: 80%;
   border-radius: 15px;
   margin: auto;
   margin-top: 50px;
+  padding-bottom: 30px;
+}
+@media (max-width: 1250px) {
+  body #app {
+    width: 95%;
+  }
 }
 body #app h1 {
   font-family: var(--font-title);
@@ -57,11 +62,45 @@ body #app h1 {
   margin-top: 30px;
   margin-bottom: 10px;
   font-size: 3vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media (max-width: 1250px) {
+  body #app h1 {
+    font-size: 10vw;
+  }
+}
+body #app h1 img {
+  height: 50px;
+  margin-right: 15px;
+}
+body #app h1 #restartTestIcon {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease-in-out;
+  font-size: 30px;
+  border: 1px solid var(--color-white2);
+  padding: 5px;
+  padding-top: 6px;
+  padding-bottom: 0px;
+  border-radius: 7px;
+  margin-left: 15px;
+}
+body #app h1 #restartTestIcon.show {
+  opacity: 1;
+  visibility: visible;
 }
 body #app #questionContainer {
   display: flex;
   justify-content: center;
   flex-direction: column;
+}
+@media (max-width: 1250px) {
+  body #app #questionContainer {
+    width: 80%;
+    margin: auto;
+  }
 }
 body #app #questionContainer label:first-of-type {
   margin: 15px 0;
@@ -81,31 +120,67 @@ body #app #questionContainer .radio0, body #app #questionContainer .radio1, body
   margin-bottom: -15px;
   border-radius: 10px;
 }
+@media (max-width: 1250px) {
+  body #app #questionContainer .radio0, body #app #questionContainer .radio1, body #app #questionContainer .radio2 {
+    width: 90%;
+  }
+}
 body #app #questionContainer .radio0:hover, body #app #questionContainer .radio1:hover, body #app #questionContainer .radio2:hover {
   cursor: pointer;
 }
-
-#restartTestIcon {
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.5s ease-in-out;
-  font-size: 30px;
-  border: 1px solid var(--color-white2);
-  padding: 5px;
-  padding-top: 6px;
-  padding-bottom: 0px;
-  border-radius: 7px;
+body #app #questionContainer .radio0 {
+  margin-top: 20px;
+  background-color: rgb(196, 255, 196);
 }
-
-#restartTestIcon.show {
-  opacity: 1;
-  visibility: visible;
+body #app #questionContainer .radio1 {
+  background-color: rgb(236, 236, 236);
+}
+body #app #questionContainer .radio2 {
+  background-color: rgb(255, 188, 188);
+}
+body #app #resultContainer {
+  width: 80%;
+  margin: auto;
+  text-align: left;
 }
 
 #startTest {
   border: 1px solid var(--color-white2);
   border-radius: 7px;
   padding: 10px 20px;
+  font-size: 1vw;
+}
+@media (max-width: 1250px) {
+  #startTest {
+    font-size: 5vw;
+    margin: 50px 20px;
+  }
+}
+
+#progressBarContainer {
+  width: 50%;
+  margin: auto;
+  background-color: #f3f3f3;
+  border-radius: 20px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+#progressBar {
+  width: 0;
+  height: 5px;
+  background-color: #88e28b;
+  border-radius: 20px 0 0 20px;
+  transition: width 0.4s ease;
+}
+
+.score {
+  font-size: 2vw;
+}
+@media (max-width: 1250px) {
+  .score {
+    font-size: 5vw;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
